@@ -7,8 +7,8 @@ from flask_migrate import Migrate
 from flask_swagger import swagger
 from flask_cors import CORS
 from utils import APIException, generate_sitemap
-from models import db
-#from models import Person
+from models import db, Todos
+
 
 app = Flask(__name__)
 app.url_map.strict_slashes = False
