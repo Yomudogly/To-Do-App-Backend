@@ -4,11 +4,11 @@ db = SQLAlchemy()
 
 class Todos(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    text = db.Column(db.String(250), unique=False, nullable=False)
+    text = db.Column(db.String(251), unique=False, nullable=False)
     done = db.Column(db.Boolean, unique=False, default=False)
 
     def __repr__(self):
-        return '<Todo %r>' % self.text
+        return '<Todos %r>' % self.text
 
     def serialize(self):
         return {

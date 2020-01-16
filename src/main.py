@@ -28,6 +28,23 @@ def handle_invalid_usage(error):
 def sitemap():
     return generate_sitemap(app)
 
+@app.route('/add', methods=['POST'])
+def handle_add():
+    body = request.get_json()
+
+    todo = Todos(text=body['text'])
+    db.session.add(todo)
+    db.session.commit()
+
+    return 'ok', 200
+@app.route('/todos', methods=['GET'])
+def handle_todos():
+    todos = Todos.query.all()
+    todos = list(map(lambda x: x.serialize(), todos))
+
+
+    return jsonify(todos), 200
+
 @app.route('/hello', methods=['POST', 'GET'])
 def handle_hello():
 
